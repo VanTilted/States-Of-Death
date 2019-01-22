@@ -18,9 +18,17 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         theRB.velocity = new Vector2(Input.GetAxis("Horizontal") * moveSpeed, theRB.velocity.y);
+
         if(Input.GetButtonDown("Jump"))
         {
             theRB.velocity = new Vector3(theRB.velocity.x, jumpForce, theRB.velocity.z);
         }
+
+        
+
+
+
+      
+            
     }
 }
