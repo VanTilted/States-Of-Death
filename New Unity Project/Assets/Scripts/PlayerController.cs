@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public Rigidbody theRB;
     public float jumpForce;
     private bool facingRight;
+    public AudioSource AudioS;
     void Start()
     {
         theRB = GetComponent<Rigidbody>();
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        PlayerFootsteps();
         float move = Input.GetAxis("Horizontal");
         theRB.velocity = new Vector2(Input.GetAxis("Horizontal") * moveSpeed, theRB.velocity.y);
 
@@ -40,5 +42,19 @@ public class PlayerController : MonoBehaviour
              theScale.z *= -1;
             transform.localScale = theScale;
             }
+         void PlayerFootsteps()
+        {
+            if(moveSpeed > 0.1f)
+            {
+                AudioS.enabled = true;
+                AudioS.loop = true;
+            }
+
+            if (moveSpeed < 0.1f)
+            {
+                AudioS.enabled = false;
+                AudioS.loop = false;
+            }
+        }
     }
 }
